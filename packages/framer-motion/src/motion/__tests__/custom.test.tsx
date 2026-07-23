@@ -56,6 +56,32 @@ function runTests(name: string, motionFactory: typeof motion.create) {
             expect(foo).toBe(true)
         })
 
+        test("forwards custom props that start with drag", () => {
+            const BaseComponent = React.forwardRef(
+                (
+                    props: Props & { dragHandle: boolean },
+                    ref: ForwardedRef<HTMLDivElement>
+                ) => {
+                    return (
+                        <div
+                            ref={ref}
+                            data-testid="custom-component"
+                            data-drag-handle={String(props.dragHandle)}
+                        />
+                    )
+                }
+            )
+
+            const MotionComponent = motionFactory(BaseComponent)
+
+            const { getByTestId } = render(<MotionComponent foo dragHandle />)
+
+            expect(getByTestId("custom-component")).toHaveAttribute(
+                "data-drag-handle",
+                "true"
+            )
+        })
+
         test("forwards MotionProps if forwardMotionProps is defined", () => {
             let animate: any
             let foo: boolean = false

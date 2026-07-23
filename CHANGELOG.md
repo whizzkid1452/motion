@@ -9,6 +9,7 @@ Undocumented APIs should be considered internal and may change without warning.
 ### Fixed
 
 -   `animateView`: Cropped group layers now animate `border-radius` from the old to new radius.
+-   Custom motion components now forward non-Motion props that start with `drag`.
 
 ## [12.42.1] 2026-06-30
 

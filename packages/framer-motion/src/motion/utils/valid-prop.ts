@@ -22,6 +22,16 @@ const validMotionProps = new Set<keyof MotionProps>([
     "onAnimationStart",
     "onAnimationComplete",
     "onUpdate",
+    "drag",
+    "dragDirectionLock",
+    "dragPropagation",
+    "dragConstraints",
+    "dragElastic",
+    "dragMomentum",
+    "dragTransition",
+    "dragControls",
+    "dragSnapToOrigin",
+    "dragListener",
     "onDragStart",
     "onDrag",
     "onDragEnd",
@@ -51,7 +61,6 @@ const validMotionProps = new Set<keyof MotionProps>([
 export function isValidMotionProp(key: string) {
     return (
         key.startsWith("while") ||
-        (key.startsWith("drag") && key !== "draggable") ||
         key.startsWith("layout") ||
         key.startsWith("onTap") ||
         key.startsWith("onPan") ||
